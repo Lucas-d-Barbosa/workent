@@ -67,10 +67,19 @@
     {
         const senha = document.querySelector(".senha");
         const repSenha = document.querySelector(".rep_senha");
+
+        if(repSenha.value === "")
+        {
+            criarError(repSenha, "O campo repetir senha não pode ser vazio.");
+            return false;
+        }
+        
         if(senha.value === repSenha.value)
         {
             return true;
         }
+
+        
         criarError(repSenha, "O campo repetir senha deve ser igual ao de senha.");
         return false;
     }

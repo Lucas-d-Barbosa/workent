@@ -6,7 +6,7 @@
       <form action="{{ route('auth.store') }}" method="POST"
         class="bg-secondary-color form-cadastro">
         @csrf
-        <h2 class="title-var">Entrar na conta</h2>
+        <h2 class="title-var">Criar conta</h2>
         <div class="d-flex flex-column w-75">
           <label for="" class="label-var">Email</label>
           <input name="email" value="{{ old('email') }}" type="email"
