@@ -17,11 +17,22 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        $formFields = $request->validate([
-            'name' => 'required|min:4',
+        $request->validate([
+            'name' => 'required|string',
             'birthday' => 'required|date|before_or_equal:today',
-            'address' => 'required|min:4'
+            'address' => 'required|string',
+            'url_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+        $data = [
+            "name" => $request->name,
+            "birthday" => $request->birthday,
+            "address" => $request->address
+        ];
+        if ($request->hasFile('url_img')) {
+            $path = $request->file('url_img')->store('profiles', 'public');
+            $data["url_img"] = $path;
+        }
 
         $userId = Auth::id();
         $user = User::find($userId);
@@ -29,8 +40,8 @@ class ProfileController extends Controller
             return redirect()->route('profile.edit');
         }
 
-        $formFields['user_id'] = $userId;
-        Client::create($formFields);
+        $data['user_id'] = $userId;
+        Client::create($data);
         return redirect()->route('home');
     }
 

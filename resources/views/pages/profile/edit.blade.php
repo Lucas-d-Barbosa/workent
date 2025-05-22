@@ -17,7 +17,7 @@
             <div class="shadow-lg rounded text-white h-100 rounded p-3" style="width: 65%; background-color: #263AD1;">
               <div class="mb-3 text-center">
                 <label for="profile_image" class="form-label" style="cursor: pointer;">
-                  <img src="{{ asset('img/Icon-perfil.svg') }}" style="width: 65%;" alt="Imagem de Perfil" />
+                  <img src="{{ asset('images/' . $client->url_img)  }}" style="width: 65%;" alt="Imagem de Perfil" />
                 </label>
                 <input type="file" name="profile_image" id="profile_image" accept="image/*" class="d-none">
               </div>

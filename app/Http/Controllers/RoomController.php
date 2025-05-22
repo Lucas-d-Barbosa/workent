@@ -15,7 +15,7 @@ class RoomController extends Controller
         ]);
     }
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $room = Room::with('rents')->findOrFail($id);
 
